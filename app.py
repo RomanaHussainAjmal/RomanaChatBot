@@ -12,11 +12,11 @@ def hello():
 def index():
 
     body = request.json
-    title= body['title']
+    AnimeShowName= body['queryResult']['parameters']['AnimeShowName']
 
     #Connect to the API anf get the JSON file.
-    api_url='https://animechan.vercel.app/api/quotes/anime?title=' + title
+    api_url='https://animechan.vercel.app/api/quotes/anime?title=' + AnimeShowName
     headers = {'Content-Type': 'application/json'} #Set the HTTP header for the API request
     response = requests.get(api_url, headers=headers) #Connect to openweather and read the JSON response.
     r=response.json() #Conver the JSON string to a dict for easier parsing.
-    return r[0]
+    return r
