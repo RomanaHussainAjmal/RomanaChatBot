@@ -12,7 +12,7 @@ def apiCall(AnimeShowName):
     response = requests.get(api_url, headers=headers) #Connect to openweather and read the JSON response.
     r=response.json() #Conver the JSON string to a dict for easier parsing.
     if 'error' in r:
-        return '{"fulfillmentMessages": [ {"text": {"text": [" No quotes available for the given/empty Anime input. Some Anime suggestions are : Hyouka , Youjo Senki , Bungou Stray Dogs 2nd Season , Fullmetal Alchemist: Brotherhood , Mahouka Koukou no Rettousei , Boku wa Tomodachi ga Sukunai NEXT , Gunbuster "]} } ]}' 
+        return '{"fulfillmentMessages": [ {"text": {"text": [" No quotes available for the given/empty Anime input. Some Anime suggestions are : Hyouka , Youjo Senki , Princess Mononoke, Mayoiga, SERVAMP, Gunbuster "]} } ]}' 
     else:
         return '{"fulfillmentMessages": [ {"text": {"text": [\" Quote from '+ AnimeShowName +' anime :' + r[0]['quote'] + ' \"]} } ]}'
 
