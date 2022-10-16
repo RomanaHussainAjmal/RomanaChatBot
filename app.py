@@ -14,7 +14,7 @@ def apiCall(AnimeShowName):
     if 'error' in r:
         return '{"fulfillmentMessages": [ {"text": {"text": [" No quotes available for the given/empty Anime input. Some ANime suggestions are : Hyouka , Youjo Senki , Bungou Stray Dogs 2nd Season , Fullmetal Alchemist: Brotherhood , Tokyo Ghoul √A , Mahouka Koukou no Rettousei , Boku wa Tomodachi ga Sukunai NEXT , Gunbuster "]} } ]}' 
     else:
-        return '{"fulfillmentMessages": [ {"text": {"text": [\" Quote from given anime :' + r[0]['quote'] + ' \"]} } ]}'
+        return '{"fulfillmentMessages": [ {"text": {"text": [\" Quote from '+ AnimeShowName +'anime :' + r[0]['quote'] + ' \"]} } ]}'
 
 @app.route('/')
 def hello():
