@@ -12,7 +12,7 @@ def apiCall(AnimeShowName):
     response = requests.get(api_url, headers=headers) #Connect to openweather and read the JSON response.
     r=response.json() #Conver the JSON string to a dict for easier parsing.
     if 'error' in r:
-        return "No quotes available for the Given Anime name" 
+        return '{"fulfillmentMessages": [ {"text": {"text": [\" No quotes available for the given Anime name" \"]} } ]}' 
     else:
         return '{"fulfillmentMessages": [ {"text": {"text": [\"' + r[0]['quote'] + ' \"]} } ]}'
 
