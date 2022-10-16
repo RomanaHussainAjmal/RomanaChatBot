@@ -11,7 +11,10 @@ def apiCall(AnimeShowName):
     headers = {'Content-Type': 'application/json'} #Set the HTTP header for the API request
     response = requests.get(api_url, headers=headers) #Connect to openweather and read the JSON response.
     r=response.json() #Conver the JSON string to a dict for easier parsing.
-    return '{"fulfillmentMessages": [ {"text": {"text": [\"' + r[0]['quote'] + ' \"]} } ]}'
+    if 'error' in r:
+        return "No quotes available for the Given Anime name" 
+    else:
+        return '{"fulfillmentMessages": [ {"text": {"text": [\"' + r[0]['quote'] + ' \"]} } ]}'
 
 @app.route('/')
 def hello():
@@ -22,20 +25,20 @@ def index():
 
     body = request.json
 
-    if(body['queryResult']['parameters']['AnimeShowName'].length!=0):
-        apiCall(body['queryResult']['parameters']['AnimeShowName'])
+    if(len(body['queryResult']['parameters']['AnimeShowName'])!=0):
+        return apiCall(body['queryResult']['parameters']['AnimeShowName'])
 
-    elif (body['queryResult']['parameters']['AnimeShowName1'].length!=0):
-        apiCall(body['queryResult']['parameters']['AnimeShowName1'])
+    elif (len(body['queryResult']['parameters']['AnimeShowName1'])!=0):
+        return apiCall(body['queryResult']['parameters']['AnimeShowName1'])
 
-    elif (body['queryResult']['parameters']['AnimeShowName2'].length!=0):
-        apiCall(body['queryResult']['parameters']['AnimeShowName2'])
+    elif (len(body['queryResult']['parameters']['AnimeShowName2'])!=0):
+        return apiCall(body['queryResult']['parameters']['AnimeShowName2'])
 
-    elif (body['queryResult']['parameters']['AnimeShowName3'].length!=0):
-        apiCall(body['queryResult']['parameters']['AnimeShowName3'])
+    elif (len(body['queryResult']['parameters']['AnimeShowName3'])!=0):
+        return apiCall(body['queryResult']['parameters']['AnimeShowName3'])
 
-    elif (body['queryResult']['parameters']['AnimeShowName4'].length!=0):
-        apiCall(body['queryResult']['parameters']['AnimeShowName4'])
+    elif (len(body['queryResult']['parameters']['AnimeShowName4'])!=0):
+        return apiCall(body['queryResult']['parameters']['AnimeShowName4'])
     
     else :
-        apiCall("")
+        return apiCall("")
