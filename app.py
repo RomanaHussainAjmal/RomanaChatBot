@@ -14,7 +14,7 @@ def apiCall(AnimeShowName):
     if 'error' in r:
         return '{"fulfillmentMessages": [ {"text": {"text": [\" No quotes available for the given Anime name" \"]} } ]}' 
     else:
-        return '{"fulfillmentMessages": [ {"text": {"text": [\"' + r[0]['quote'] + ' \"]} } ]}'
+        return '{"fulfillmentMessages": [ {"text": {"text": [\" Quote from given anime :' + r[0]['quote'] + ' \"]} } ]}'
 
 @app.route('/')
 def hello():
